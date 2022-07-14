@@ -1,0 +1,30 @@
+spring:
+  profiles:
+    active: dev
+
+logging:
+  level:
+    io.r2dbc.postgresql.QUERY: INFO
+    io.r2dbc.postgresql.PARAM: INFO
+    ROOT: INFO
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+---
+spring:
+  r2dbc:
+    url: r2dbc:h2:mem:///test?options=DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    name: sa
+    password:
+  config:
+    activate:
+      on-profile: dev
+---
+spring:
+  r2dbc:
+    url: r2dbc:h2:mem:///test?options=DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    name: sa
+    password:
+  config:
+    activate:
+      on-profile: test
